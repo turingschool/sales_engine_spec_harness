@@ -4,7 +4,16 @@ This is the evaluation test harness for SalesEngine. It requires your implementa
 
 ## Installation
 
-Git clone this project into a directory that lives at the same level as your `sales_engine` project directory.
+Git clone this project into a directory that lives at the same level as your `sales_engine` project directory. It should be arranged like:
+
+    <my_code_directory>
+    |
+    |\
+    | \sales_engine/
+    |
+    |\
+    | \sales_engine_test_harness/
+    |
 
 And then execute:
 
@@ -15,6 +24,7 @@ This will load in your `SalesEngine` implementation from your local file system.
 ### Note:
 
 Please be sure to name your gem `sales_engine` inside of your `sales_engine.gemspec` file. This *does differ* from the initial instructions. Sorry!
+
 
 ## Usage
 
