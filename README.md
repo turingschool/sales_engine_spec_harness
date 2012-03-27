@@ -12,14 +12,14 @@ Git clone this project into a directory that lives at the same level as your `sa
     | \sales_engine/
     |
     |\
-    | \sales_engine_test_harness/
+    | \sales_engine_spec_harness/
     |
 
-And then execute:
+Change directories into the `sales_engine_spec_harness/` directory and then execute:
 
     $ bundle
 
-This will load in your `SalesEngine` implementation from your local file system. This test provides the CSV files at `./data` relative to the current directory from the perspective of the spec run.
+This will load in your `SalesEngine` implementation from your local file system. The spec harness provides the CSV files at `./data` relative to the current directory from the perspective of the spec run.
 
 ### Note:
 
