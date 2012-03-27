@@ -42,8 +42,7 @@ describe SalesEngine::InvoiceItem do
 
     describe "#invoice" do
       it "exists" do
-        invoice_customer = SalesEngine::Customer.find_by_id invoice_item.customer_id
-        invoice_item.customer.last_name.should == invoice.customer.last_name
+        invoice_item.invoice.should be
       end
     end
 
