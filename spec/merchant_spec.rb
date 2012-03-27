@@ -113,11 +113,13 @@ describe SalesEngine::Merchant do
     end
 
     describe "#customers_with_pending_invoices" do
+      let(:merchant) { SalesEngine::Merchant.find_by_name "Parisian Group" }
+
       it "returns the total number of customers with pending invoices" do
         customers = merchant.customers_with_pending_invoices
-        customers.count.should == 6
+        customers.count.should == 7
         customers.any? do |customer|
-          customer.last_name == "Gaylord"
+          customer.last_name == "Lakin"
         end.should be_true
       end
     end
