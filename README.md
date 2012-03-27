@@ -23,7 +23,7 @@ This will load in your `SalesEngine` implementation from your local file system.
 
 ### Note:
 
-Please be sure to name your gem `sales_engine` inside of your `sales_engine.gemspec` file. This *does differ* from the initial instructions. Sorry!
+Please be sure to name your gem `sales_engine` inside of your `sales_engine.gemspec` file. This _does differ_ from the initial instructions. Sorry!
 
 
 ## Usage
