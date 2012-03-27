@@ -76,7 +76,7 @@ describe SalesEngine::Invoice do
       let(:customer) { SalesEngine::Customer.random }
       let(:merchant) { SalesEngine::Merchant.random }
       let(:items) do
-        (1..3).map { Item.random }
+        (1..3).map { SalesEngine::Item.random }
       end
       it "creates a new invoice" do
 
