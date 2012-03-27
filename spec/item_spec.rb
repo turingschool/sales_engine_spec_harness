@@ -69,7 +69,7 @@ describe SalesEngine::Item do
       it "returns the top n items ranked by most sold" do
         most = SalesEngine::Item.most_items(42)
 
-        most.second.name.should == "Item Dicta Autem"
+        most[1].name.should == "Item Dicta Autem"
         most.last.name.should   == "Item Quidem Dolorum"
       end
     end
