@@ -12,6 +12,10 @@ And then execute:
 
 This will load in your `SalesEngine` implementation from your local file system. This test provides the CSV files at `./data` relative to the current directory from the perspective of the spec run.
 
+### Note:
+
+Please be sure to name your gem `sales_engine` inside of your `sales_engine.gemspec` file. This *does differ* from the initial instructions. Sorry!
+
 ## Usage
 
 To test your implementation against the evaluation specs, run:
