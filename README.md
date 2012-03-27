@@ -1,29 +1,25 @@
 # SalesEngineSpecHarness
 
-TODO: Write a gem description
+This is the evaluation test harness for SalesEngine. It requires your implementation of SalesEngine as a gem, then runs the evaluation specs against it.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'sales_engine_spec_harness'
+Git clone this project into a directory that lives at the same level as your `sales_engine` project directory.
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install sales_engine_spec_harness
+This will load in your `SalesEngine` implementation from your local file system. This test provides the CSV files at `./data` relative to the current directory from the perspective of the spec run.
 
 ## Usage
 
-TODO: Write usage instructions here
+To test your implementation against the evaluation specs, run:
 
-## Contributing
+    $ bundle exec rspec
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+or:
+
+    $ bundle exec rake
+
+You should be all grean.
