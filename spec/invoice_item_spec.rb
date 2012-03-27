@@ -36,7 +36,7 @@ describe SalesEngine::InvoiceItem do
 
     describe "#item" do
       it "exists" do
-        invoice_item.item.name.should == "Item Qui Esse"
+        invoice_item.item.name.should == "Item Cupiditate Magni"
       end
     end
 
