@@ -6,9 +6,11 @@ describe SalesEngine::Transaction do
     describe ".random" do
       it "usually returns different things on subsequent calls" do
         transaction_one = SalesEngine::Transaction.random
+        transaction_two = SalesEngine::Transaction.random
+
         10.times do
-          transaction_two = SalesEngine::Transaction.random
           break if transaction_one.id != transaction_two.id
+          transaction_two = SalesEngine::Transaction.random
         end
 
         transaction_one.id.should_not == transaction_two.id

@@ -5,9 +5,11 @@ describe SalesEngine::Item do
     describe ".random" do
       it "usually returns different things on subsequent calls" do
         item_one =SalesEngine::Item.random
+        item_two = SalesEngine::Item.random
+
         10.times do
-          item_two = SalesEngine::Item.random
           break if item_one.id != item_two.id
+          item_two = SalesEngine::Item.random
         end
 
         item_one.id.should_not == item_two.id

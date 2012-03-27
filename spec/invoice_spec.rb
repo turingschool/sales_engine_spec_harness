@@ -5,9 +5,11 @@ describe SalesEngine::Invoice do
     describe ".random" do
       it "usually returns different things on subsequent calls" do
         invoice_one = SalesEngine::Invoice.random
+        invoice_two = SalesEngine::Invoice.random
+
         10.times do
-          invoice_two = SalesEngine::Invoice.random
           break if invoice_one.id != invoice_two.id
+          invoice_two = SalesEngine::Invoice.random
         end
 
         invoice_one.id.should_not == invoice_two.id

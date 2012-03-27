@@ -5,9 +5,11 @@ describe SalesEngine::Merchant do
     describe ".random" do
       it "usually returns different things on subsequent calls" do
         merchant_one = SalesEngine::Merchant.random
+        merchant_two = SalesEngine::Merchant.random
+
         10.times do
-          merchant_two = SalesEngine::Merchant.random
           break if merchant_one.id != merchant_two.id
+          merchant_two = SalesEngine::Merchant.random
         end
 
         merchant_one.id.should_not == merchant_two.id
