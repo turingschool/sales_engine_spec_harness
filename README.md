@@ -36,4 +36,4 @@ or:
 
     $ bundle exec rake
 
-You should be all grean.
+You should be all green.
