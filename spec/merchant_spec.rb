@@ -63,7 +63,7 @@ describe SalesEngine::Merchant do
       it "returns all revenue for a given date" do
         date = Date.parse "Tue, 20 Mar 2012"
 
-        SalesEngine::Merchant.revenue(date).to_f.should be_within(0.001).of(263902466.0)
+        SalesEngine::Merchant.revenue(date).should == BigDecimal.new(2639024.66, 2)
       end
     end
 
@@ -88,7 +88,7 @@ describe SalesEngine::Merchant do
         let(:merchant) { SalesEngine::Merchant.find_by_name "Dicki-Bednar" }
 
         it "reports all revenue" do
-          merchant.revenue.to_f.should be_within(0.001).of(118422772.0)
+          merchant.revenue.should == BigDecimal.new(1184227.72, 2)
         end
       end
       context "given a date" do
@@ -97,7 +97,7 @@ describe SalesEngine::Merchant do
         it "restricts to that date" do
           date = Date.parse "Wed, 21 Mar 2012"
 
-          merchant.revenue(date).to_f.should be_within(0.001).of(4521907.0)
+          merchant.revenue(date).should == BigDecimal.new(4521907.0, 2)
         end
       end
     end
