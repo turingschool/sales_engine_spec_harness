@@ -1,3 +1,5 @@
 --color
 --format progress
---tag ~extension
+--tag ~invoice
+--tag ~customer
+--tag ~merchant
