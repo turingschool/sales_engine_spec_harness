@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SalesEngine::Customer do
+describe SalesEngine::Customer, customer: true do
   context "extensions" do
 
     describe "#days_since_activity" do
