@@ -93,7 +93,7 @@ describe SalesEngine::Invoice do
 
     describe "#charge" do
       it "creates a transaction" do
-        invoice = SalesEngine::Invoice.random
+        invoice = SalesEngine::Invoice.find_by_id(100)
         prior_transaction_count = invoice.transactions.count
 
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
