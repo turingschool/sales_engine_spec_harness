@@ -81,10 +81,25 @@ describe SalesEngine::Invoice do
       it "creates a new invoice" do
 
         invoice = SalesEngine::Invoice.create(customer: customer, merchant: merchant, items: items)
-        pending "Verify relationships"
+
+        items.map(&:name).each do |name|
+          invoice.items.map(&:name).should include(name)
+        end
+
+        #invoice.merchant.id.should == merchant.id
+        invoice.customer.id.should == customer.id
+      end
+    end
+
+    describe "#charge" do
+      it "creates a transaction" do
+        invoice = SalesEngine::Invoice.random
+        prior_transaction_count = invoice.transactions.count
 
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
 
+        invoice = SalesEngine::Invoice.find_by_id(invoice.id)
+        invoice.transactions.count.should == prior_transaction_count + 1
       end
     end
 
