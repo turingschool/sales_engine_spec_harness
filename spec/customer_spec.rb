@@ -21,7 +21,7 @@ describe SalesEngine::Customer do
     describe ".find_by_last_name" do
       it "finds a record" do
         customer = SalesEngine::Customer.find_by_last_name "Ullrich"
-        customer.first_name.should == "Ramon"
+        %w(Ramon Brice Annabell).should include(customer.first_name)
       end
     end
 
