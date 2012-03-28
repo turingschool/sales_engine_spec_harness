@@ -19,7 +19,7 @@ describe SalesEngine::InvoiceItem do
     describe ".find_by_item_id" do
       it "can find a record" do
         invoice_item = SalesEngine::InvoiceItem.find_by_item_id 123
-        invoice_item.invoice_id.should == 184
+        invoice_item.item.name.should == "Item Doloribus Ducimus"
       end
     end
 
