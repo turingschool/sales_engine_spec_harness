@@ -27,7 +27,7 @@ describe SalesEngine::Transaction do
     describe ".find_all_by_result" do
       it "can find multiple records" do
         transactions = SalesEngine::Transaction.find_all_by_result "success"
-        transactions.should have(4648).transactions
+        transactions.count.should be_within(2).of(4648)
       end
     end
   end
