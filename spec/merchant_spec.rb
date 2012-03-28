@@ -89,16 +89,16 @@ describe SalesEngine::Merchant do
         let(:merchant) { SalesEngine::Merchant.find_by_name "Dicki-Bednar" }
 
         it "reports all revenue" do
-          merchant.revenue.should == BigDecimal.new(1184227.72, 2)
+          merchant.revenue.should == BigDecimal.new("1148393.74")
         end
       end
       context "given a date" do
-        let(:merchant) { SalesEngine::Merchant.find_by_name "Nienow-Quigley" }
+        let(:merchant) { SalesEngine::Merchant.find_by_name "Willms and Sons" }
 
         it "restricts to that date" do
-          date = Date.parse "Wed, 21 Mar 2012"
+          date = Date.parse "Fri, 09 Mar 2012"
 
-          merchant.revenue(date).should == BigDecimal.new(4521907.0, 2)
+          merchant.revenue(date).should == BigDecimal.new("8373.29")
         end
       end
     end
