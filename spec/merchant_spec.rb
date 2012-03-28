@@ -78,7 +78,7 @@ describe SalesEngine::Merchant do
 
     describe ".most_items" do
       it "returns the top n item-sellers" do
-        most = SalesEngine::Merchant.most_revenue(4)
+        most = SalesEngine::Merchant.most_items(4)
         most.first.name.should == "Kassulke, O'Hara and Quitzon"
         most.last.name.should  == "Daugherty Group"
       end
