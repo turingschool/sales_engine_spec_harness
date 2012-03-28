@@ -63,7 +63,8 @@ describe SalesEngine::Merchant do
       it "returns all revenue for a given date" do
         date = Date.parse "Tue, 20 Mar 2012"
 
-        SalesEngine::Merchant.revenue(date).should == BigDecimal.new(2639024.66, 2)
+        revenue = SalesEngine::Merchant.revenue(date)
+        revenue.should == BigDecimal.new("2549722.91")
       end
     end
 
