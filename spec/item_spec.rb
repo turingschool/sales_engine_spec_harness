@@ -78,7 +78,7 @@ describe SalesEngine::Item do
       let(:item) { SalesEngine::Item.find_by_name "Item Accusamus Ut" }
 
       it "returns something castable to date" do
-        date = Date.parse "Tue, 27 Mar 2012"
+        date = Date.parse "Sat, 24 Mar 2012"
         item.best_day.to_date.should == date
       end
     end
