@@ -5,9 +5,11 @@ describe SalesEngine::Merchant do
     describe ".dates_by_revenue" do
       it  "returns an array of Dates in descending order of revenue" do
         dates = SalesEngine::Merchant.dates_by_revenue
+
         dates.size.should == 22
       end
     end
+
     describe ".dates_by_revenue(x)" do
       it  "returns the top x Dates in descending order of revenue" do
         dates = SalesEngine::Merchant.dates_by_revenue(5)
@@ -17,14 +19,17 @@ describe SalesEngine::Merchant do
         dates.last.should == DateTime.parse("2012-03-15")
       end
     end
+
     describe ".revenue(range_of_dates)" do
       it "returns the total revenue for all merchants across several dates" do
         date_1 = DateTime.parse("2012-03-14")
         date_2 = DateTime.parse("2012-03-16")
         revenue = SalesEngine::Merchant.revenue(date_1..date_2)
+
         revenue.should == BigDecimal("8226179.74")
       end
     end
+
     describe "#revenue(range_of_dates)" do
       it "returns the total revenue for that merchant across several dates" do
         date_1 = DateTime.parse("2012-03-01")
