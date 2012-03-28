@@ -67,9 +67,9 @@ describe SalesEngine::Item do
 
     describe ".most_items" do
       it "returns the top n items ranked by most sold" do
-        most = SalesEngine::Item.most_items(42)
+        most = SalesEngine::Item.most_items(38)
 
-        most[1].name.should == "Item Dicta Autem"
+        most[1].name.should == "Item Nam Magnam"
         most.last.name.should   == "Item Quidem Dolorum"
       end
     end
