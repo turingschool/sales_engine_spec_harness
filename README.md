@@ -45,3 +45,19 @@ Similarly, if you have implemented the invoice or customer extensions, run:
 Or run them all with `bundle exec rake spec:extensions`.
 
 You should be all green.
+
+## Getting Your Extensions Evaluated
+
+If you've implemented any or all of the extensions and want them tested by the evaluation script, you will need to define a constant in `SalesEngine` that list each extension. I recommend just dropping it into `lib/sales_engine.rb`. Here's an example:
+
+    # in file lib/sales_engine.rb
+
+    module SalesEngine
+      EXTENSIONS = %w(customer invoice merchant)
+
+      def self.startup
+        # ...
+      end
+    end
+
+Of course, only list the extensions you've completed. If you haven't completed any, please assign an empty array to the `EXTENSIONS` constant.
