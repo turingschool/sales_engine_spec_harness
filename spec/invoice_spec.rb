@@ -73,8 +73,8 @@ describe SalesEngine::Invoice do
   context "Business Intelligence" do
 
     describe ".create" do
-      let(:customer) { SalesEngine::Customer.random }
-      let(:merchant) { SalesEngine::Merchant.random }
+      let(:customer) { SalesEngine::Customer.find_by_id(7) }
+      let(:merchant) { SalesEngine::Merchant.find_by_id(22) }
       let(:items) do
         (1..3).map { SalesEngine::Item.random }
       end
