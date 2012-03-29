@@ -1,5 +1,17 @@
-language: ruby
-rvm:
-  - 1.9.3
-
- script: bundle exec rake spec
+branches:
+  only:
+  - cstrahan
+  - dkaufman
+  - mikesea
+  - worace
+  - '1337807'
+  - MikeSilvis
+  - tyre
+  - tkiefhaber
+  - chrismanderson
+  - mrgilman
+  - eweng
+  - darrellrivera
+  - travisvalentine
+  - JanKoszewski
+  - athal7
