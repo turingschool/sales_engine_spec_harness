@@ -46,7 +46,7 @@ Or run them all with `bundle exec rake spec:extensions`.
 
 You should be all green.
 
-## Getting Your Extensions Evaluated
+## Getting Your Extensions Evaluated (particularly on Travis CI)
 
 If you've implemented any or all of the extensions and want them tested by the evaluation script, you will need to define a constant in `SalesEngine` that list each extension. I recommend just dropping it into `lib/sales_engine.rb`. Here's an example:
 
