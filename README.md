@@ -2,7 +2,7 @@
 
 This is the evaluation test harness for SalesEngine. It requires your implementation of SalesEngine as a gem, then runs the evaluation specs against it.
 
-## Installation
+## Installing Locally
 
 Git clone this project into a directory that lives at the same level as your `sales_engine` project directory. It should be arranged like:
 
@@ -26,7 +26,7 @@ This will load in your `SalesEngine` implementation from your local file system.
 Please be sure to name your gem `sales_engine` inside of your `sales_engine.gemspec` file. This **does differ** from the initial instructions. Sorry!
 
 
-## Usage
+### Usage
 
 To test your implementation against the evaluation specs, run:
 
@@ -46,7 +46,18 @@ Or run them all with `bundle exec rake spec:extensions`.
 
 You should be all green.
 
-## Getting Your Extensions Evaluated (particularly on Travis CI)
+## Setup for Travis-CI
+
+* Fork this repository
+* Edit the `Gemfile` so it references _your_ SalesEngine gem from git using the *Git Read-Only* address. Ex:
+
+```
+gem 'sales_engine', :git => "git://github.com/jcasimir/sales_engine.git"
+```
+
+* Add the constant described below to configure your extensions
+
+### Getting Your Extensions Evaluated (particularly on Travis CI)
 
 If you've implemented any or all of the extensions and want them tested by the evaluation script, you will need to define a constant in `SalesEngine` that list each extension. I recommend just dropping it into `lib/sales_engine.rb`. Here's an example:
 
