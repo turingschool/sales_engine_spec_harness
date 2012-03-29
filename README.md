@@ -48,14 +48,15 @@ You should be all green.
 
 ## Setup for Travis-CI
 
-* Fork this repository
-* Edit the `Gemfile` so it references _your_ SalesEngine gem from git using the *Git Read-Only* address. Ex:
+* Fork this repository and clone it to your machine
+* Edit the `Gemfile` so it references _your_ `SalesEngine` gem from git using the *Git Read-Only* address. Ex:
 
 ```
 gem 'sales_engine', :git => "git://github.com/jcasimir/sales_engine.git"
 ```
 
-* Add the constant described below to configure your extensions
+* Add the `SalesEngine::EXTENSIONS` constant described below to configure your extensions
+* Push the changes to Github and check the results on Travis!
 
 ### Getting Your Extensions Evaluated (particularly on Travis CI)
 
