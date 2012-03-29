@@ -46,7 +46,9 @@ Or run them all with `bundle exec rake spec:extensions`.
 
 You should be all green.
 
-## Setup for Travis-CI
+## Setup for Travis-CI - THIS IS NOW OPTIONAL!
+
+**NOTE**: This is now optional. It might be more illustrative for you to instead do this process for *your* `SalesEngine` repo.
 
 * Fork this repository and clone it to your machine
 * Edit the `Gemfile` so it references _your_ `SalesEngine` gem from git using the *Git Read-Only* address. Ex:
