@@ -23,7 +23,7 @@ describe SalesEngine::Customer, customer: true do
       context "when there are pending invoices" do
         let(:first_invoice) { SalesEngine::Customer.find_by_id(2).invoices.first }
         it "returns an array of the pending invoices" do
-          bad_transaction = double("transaction")
+          bad_transaction = SalesEngine::Transaction.random
           bad_transaction.stub(:result => "failed")
           first_invoice.stub(:transactions => [bad_transaction])
 
