@@ -30,10 +30,18 @@ Please be sure to name your gem `sales_engine` inside of your `sales_engine.gems
 
 To test your implementation against the evaluation specs, run:
 
-    $ bundle exec rspec
+    $ bundle exec rake spec
 
-or:
+If you have implemtented the merchant extension, run:
 
-    $ bundle exec rake
+    $ bundle exec rake spec:extensions:merchant
+
+Similarly, if you have implemented the invoice or customer extensions, run:
+
+    $ bundle exec rake spec:extensions:invoice
+    # or
+    $ bundle exec rake spec:extensions:customer
+
+Or run them all with `bundle exec rake spec:extensions`.
 
 You should be all green.
