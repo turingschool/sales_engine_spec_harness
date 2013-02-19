@@ -4,24 +4,12 @@ rvm:
 notifications:
   email:
     recipients:
-      - matt@jumpstartlab.com
+      - katrina@jumpstartlab.com
+      - franklin@jumpstartlab.com
       - jeff@jumpstartlab.com
     on_success: always
     on_failure: always
 branches:
-  only:
-  - cstrahan
-  - dkaufman
-  - mikesea
-  - worace
-  - '1337807'
-  - MikeSilvis
-  - tyre
-  - tkiefhaber
-  - chrismanderson
-  - mrgilman
-  - eweng
-  - darrellrivera
-  - travisvalentine
-  - JanKoszewski
-  - athal7
+  except:
+  - master
+
