@@ -5,6 +5,22 @@ Bundler.require
 begin
   require 'rspec/core/rake_task'
 
+  desc "Run each test file in the sales engine solution independently."
+  namespace :test do
+    task :independently do
+      working_directory = Dir.pwd
+      begin
+        Dir.chdir('../sales_engine')
+        files = Dir.glob('test/**/*_test.rb')
+        files.each do |file|
+          system("bundle exec ruby #{file}")
+        end
+      ensure
+        Dir.chdir(working_directory)
+      end
+    end
+  end
+
   RSpec::Core::RakeTask.new(:spec) do |t|
     t.rspec_opts = "--tag ~merchant --tag ~customer --tag ~invoice"
   end
