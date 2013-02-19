@@ -4,8 +4,8 @@ require File.expand_path('../lib/sales_engine_spec_harness/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Matt Yoho"]
   gem.email         = ["mby@mattyoho.com"]
-  gem.description   = %q{Test harness for Hungry Academy SalesEngine project}
-  gem.summary       = %q{Test harness for Hungry Academy SalesEngine project}
+  gem.description   = %q{Test harness for gSchool SalesEngine project}
+  gem.summary       = %q{Test harness for gSchool SalesEngine project. Originally written for Hungry Academy.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
