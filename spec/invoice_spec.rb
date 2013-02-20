@@ -35,17 +35,17 @@ describe SalesEngine::Invoice do
     let(:invoice) { SalesEngine::Invoice.find_by_id 1002 }
 
     describe "#transactions" do
-      it "has 1 of them" do
+      it "has the correct number of them" do
         invoice.transactions.should have(1).transaction
       end
     end
 
     describe "#items" do
-      it "has 3 of them" do
+      it "has the correct number of them" do
         invoice.items.should have(3).items
       end
 
-      it "has one for 'Item Accusamus Officia'" do
+      it "has one with a specific name" do
         item = invoice.items.find {|i| i.name == 'Item Accusamus Officia' }
         item.should_not be_nil
       end
@@ -59,11 +59,11 @@ describe SalesEngine::Invoice do
     end
 
     describe "#invoice_items" do
-      it "has 3 of them" do
+      it "has the correct number of them" do
         invoice.invoice_items.should have(3).items
       end
 
-      it "has one for an item 'Item Accusamus Officia'" do
+      it "has one for a specific item" do
         item = invoice.invoice_items.find {|ii| ii.item.name == 'Item Accusamus Officia' }
         item.should_not be_nil
       end

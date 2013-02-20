@@ -35,7 +35,7 @@ describe SalesEngine::Item do
     let(:item) { SalesEngine::Item.find_by_name "Item Saepe Ipsum" }
 
     describe "#invoice_items" do
-      it "has 8 of them" do
+      it "has the correct number of them" do
         item.invoice_items.should have(8).items
       end
 

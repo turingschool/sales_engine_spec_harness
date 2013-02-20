@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe SalesEngine::Customer do
-  let(:customer) { SalesEngine::Customer.find_by_id 999 }
 
-  context "Relationships" do
+  describe "Searching" do
+
     describe ".random" do
       it "usually returns different things on subsequent calls" do
         customer_one = SalesEngine::Customer.random
@@ -31,9 +31,12 @@ describe SalesEngine::Customer do
         customers.should have(2).customers
       end
     end
+
   end
 
   context "Relationships" do
+    let(:customer) { SalesEngine::Customer.find_by_id 999 }
+
     describe "#invoices" do
       it "returns all of a customer's invoices" do
         customer.invoices.should have(7).invoices
@@ -45,7 +48,6 @@ describe SalesEngine::Customer do
         end
       end
     end
-
   end
 
   context "Business Intelligence" do

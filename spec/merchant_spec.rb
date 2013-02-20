@@ -23,7 +23,7 @@ describe SalesEngine::Merchant do
       end
     end
 
-    describe ".find_by_all_name" do
+    describe ".find_all_by_name" do
       it "can find multiple records" do
         merchants = SalesEngine::Merchant.find_all_by_name "Williamson Group"
         merchants.should have(2).merchants
@@ -35,22 +35,22 @@ describe SalesEngine::Merchant do
     let(:merchant) { SalesEngine::Merchant.find_by_name "Kirlin, Jakubowski and Smitham" }
 
     describe "#items" do
-      it "has 33 of them" do
+      it "has the correct number of them" do
         merchant.items.should have(33).items
       end
 
-      it "includes an 'Item Consequatur Odit'" do
+      it "includes a known item" do
         item = merchant.items.find {|i| i.name == 'Item Consequatur Odit' }
         item.should_not be_nil
       end
     end
 
     describe "#invoices" do
-      it "has 52 of them" do
+      it "has the correct number of them" do
         merchant.invoices.should have(43).invoices
       end
 
-      it "has a shipped invoice for Block" do
+      it "has a shipped invoice for a specific customer" do
         invoice = merchant.invoices.find {|i| i.customer.last_name == 'Block' }
         invoice.status.should == "shipped"
       end
@@ -60,7 +60,7 @@ describe SalesEngine::Merchant do
   context "Business Intelligence" do
 
     describe ".revenue" do
-      it "returns all revenue for a given date" do
+      it "returns all revenue for a specific date" do
         date = Date.parse "Tue, 20 Mar 2012"
 
         revenue = SalesEngine::Merchant.revenue(date)
