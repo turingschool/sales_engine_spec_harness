@@ -86,7 +86,7 @@ describe SalesEngine::Invoice do
           invoice.items.map(&:name).should include(name)
         end
 
-        #invoice.merchant.id.should == merchant.id
+        invoice.merchant_id.should == merchant.id
         invoice.customer.id.should == customer.id
       end
     end
