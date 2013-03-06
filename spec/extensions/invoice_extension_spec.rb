@@ -4,10 +4,10 @@ describe SalesEngine::Invoice, invoice: true do
   context "extensions" do
     describe ".pending" do
       it "returns Invoices without a successful transaction" do
-        invoice =  SalesEngine::Invoice.find_by_id(13)
-        pending_invoices = SalesEngine::Invoice.pending
+        invoice = SalesEngine::Invoice.find_by_id(13)
+        pending_invoice = SalesEngine::Invoice.pending
 
-        pending_invoices[1].should == invoice
+        pending_invoices.map(&:id).include?(invoice).should == true
       end
     end
 
