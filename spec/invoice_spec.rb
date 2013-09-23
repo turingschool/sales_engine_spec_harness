@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe SalesEngine::Invoice do
+describe "SalesEngine invoices" do
   context "Searching" do
     describe ".random" do
       it "usually returns different things on subsequent calls" do
-        invoice_one = SalesEngine::Invoice.random
-        invoice_two = SalesEngine::Invoice.random
+        invoice_one = engine.invoice_repository.random
+        invoice_two = engine.invoice_repository.random
 
         10.times do
           break if invoice_one.id != invoice_two.id
-          invoice_two = SalesEngine::Invoice.random
+          invoice_two = engine.invoice_repository.random
         end
 
         invoice_one.id.should_not == invoice_two.id
@@ -18,21 +18,21 @@ describe SalesEngine::Invoice do
 
     describe ".find_by_status" do
       it "can find a record" do
-        invoice = SalesEngine::Invoice.find_by_status "cool"
+        invoice = engine.invoice_repository.find_by_status "cool"
         invoice.should be_nil
       end
     end
 
     describe ".find_all_by_status" do
       it "can find multiple records" do
-        invoices = SalesEngine::Invoice.find_all_by_status "shipped"
+        invoices = engine.invoice_repository.find_all_by_status "shipped"
         invoices.should have(4843).invoices
       end
     end
   end
 
   context "Relationships" do
-    let(:invoice) { SalesEngine::Invoice.find_by_id 1002 }
+    let(:invoice) { engine.invoice_repository.find_by_id 1002 }
 
     describe "#transactions" do
       it "has the correct number of them" do
@@ -73,14 +73,14 @@ describe SalesEngine::Invoice do
   context "Business Intelligence" do
 
     describe ".create" do
-      let(:customer) { SalesEngine::Customer.find_by_id(7) }
-      let(:merchant) { SalesEngine::Merchant.find_by_id(22) }
+      let(:customer) { engine.customer_repository.find_by_id(7) }
+      let(:merchant) { engine.merchant_repository.find_by_id(22) }
       let(:items) do
-        (1..3).map { SalesEngine::Item.random }
+        (1..3).map { engine.item_repository.random }
       end
       it "creates a new invoice" do
 
-        invoice = SalesEngine::Invoice.create(customer: customer, merchant: merchant, items: items)
+        invoice = engine.invoice_repository.create(customer: customer, merchant: merchant, items: items)
 
         items.map(&:name).each do |name|
           invoice.items.map(&:name).should include(name)
@@ -93,12 +93,12 @@ describe SalesEngine::Invoice do
 
     describe "#charge" do
       it "creates a transaction" do
-        invoice = SalesEngine::Invoice.find_by_id(100)
+        invoice = engine.invoice_repository.find_by_id(100)
         prior_transaction_count = invoice.transactions.count
 
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
 
-        invoice = SalesEngine::Invoice.find_by_id(invoice.id)
+        invoice = engine.invoice_repository.find_by_id(invoice.id)
         invoice.transactions.count.should == prior_transaction_count + 1
       end
     end

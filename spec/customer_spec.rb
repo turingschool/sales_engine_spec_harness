@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe SalesEngine::Customer do
+describe "SalesEngine customers" do
 
   describe "Searching" do
 
     describe ".random" do
       it "usually returns different things on subsequent calls" do
-        customer_one = SalesEngine::Customer.random
-        customer_two = SalesEngine::Customer.random
+        customer_one = engine.customer_repository.random
+        customer_two = engine.customer_repository.random
 
         10.times do
           break if customer_one.id != customer_two.id
-          customer_two = SalesEngine::Customer.random
+          customer_two = engine.customer_repository.random
         end
 
         customer_one.id.should_not == customer_two.id
@@ -20,14 +20,14 @@ describe SalesEngine::Customer do
 
     describe ".find_by_last_name" do
       it "finds a record" do
-        customer = SalesEngine::Customer.find_by_last_name "Ullrich"
+        customer = engine.customer_repository.find_by_last_name "Ullrich"
         %w(Ramon Brice Annabell).should include(customer.first_name)
       end
     end
 
     describe ".find_all_by_first_name" do
       it "can find multiple records" do
-        customers = SalesEngine::Customer.find_all_by_first_name "Sasha"
+        customers = engine.customer_repository.find_all_by_first_name "Sasha"
         customers.should have(2).customers
       end
     end
@@ -35,7 +35,7 @@ describe SalesEngine::Customer do
   end
 
   context "Relationships" do
-    let(:customer) { SalesEngine::Customer.find_by_id 999 }
+    let(:customer) { engine.customer_repository.find_by_id 999 }
 
     describe "#invoices" do
       it "returns all of a customer's invoices" do
@@ -51,7 +51,7 @@ describe SalesEngine::Customer do
   end
 
   context "Business Intelligence" do
-    let(:customer) { SalesEngine::Customer.find_by_id 2 }
+    let(:customer) { engine.customer_repository.find_by_id 2 }
 
     describe "#transactions" do
       it "returns a list of transactions the customer has had" do

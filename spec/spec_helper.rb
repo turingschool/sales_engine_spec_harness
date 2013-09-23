@@ -1,12 +1,13 @@
-require 'bundler'
-
-Bundler.require
-
-require 'sales_engine'
+require './../sales_engine/lib/sales_engine'
 require 'date'
 
 RSpec.configure do |config|
   config.before(:suite) do
-    SalesEngine.startup
+    $engine = SalesEngine.new("./data")
   end
 end
+
+def engine
+  $engine
+end
+

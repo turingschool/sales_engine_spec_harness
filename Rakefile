@@ -1,6 +1,4 @@
 #!/usr/bin/env rake
-require "bundler/gem_tasks"
-Bundler.require
 
 begin
   require 'rspec/core/rake_task'
@@ -13,7 +11,7 @@ begin
         Dir.chdir('../sales_engine')
         files = Dir.glob('test/**/*_test.rb')
         files.each do |file|
-          system("bundle exec ruby #{file}")
+          system("ruby #{file}")
         end
       ensure
         Dir.chdir(working_directory)
