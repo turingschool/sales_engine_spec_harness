@@ -4,6 +4,7 @@ require 'date'
 RSpec.configure do |config|
   config.before(:suite) do
     $engine = SalesEngine.new("./data")
+    $engine.startup
   end
 end
 
