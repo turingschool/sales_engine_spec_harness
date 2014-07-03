@@ -18,7 +18,7 @@ describe "SalesEngine items" do
 
     describe ".find_by_unit_price" do
       it "can find one record" do
-        item = engine.item_repository.find_by_unit_price BigDecimal.new("935.19")
+        item = engine.item_repository.find_by_unit_price BigDecimal.new("93519")
         item.name.should == "Item Alias Nihil"
       end
     end
