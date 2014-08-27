@@ -5,9 +5,9 @@ describe "SalesEngine invoice extensions", invoice: true do
     describe ".pending" do
       it "returns Invoices without a successful transaction" do
         invoice = engine.invoice_repository.find_by_id(13)
-        pending_invoice = engine.invoice_repository.pending
+        pending_invoices = engine.invoice_repository.pending
 
-        pending_invoices.map(&:id).include?(invoice).should == true
+        pending_invoices.include?(invoice).should == true
       end
     end
 
