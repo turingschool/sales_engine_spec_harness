@@ -10,11 +10,19 @@ unless defined? Bundler
 end
 
 # Must run from root
-unless File.expand_path(Dir.pwd) == File.expand_path('../..',  __FILE__)
-  die_because.call "Run the program from the root of the Spec Harness"
+spec_harness_root = File.expand_path('../..',  __FILE__)
+unless File.expand_path(Dir.pwd) == spec_harness_root
+  die_because.call "Run the program from the root of the Spec Harness (#{spec_harness_root.inspect})"
 end
 
-require './../sales_engine/lib/sales_engine'
+# load their code
+sales_engine_root = File.expand_path('../../../sales_engine/lib', __FILE__)
+$LOAD_PATH.unshift(sales_engine_root)
+begin
+  require 'sales_engine'
+rescue LoadError => e
+  die_because "Expect sales engine to be in #{sales_engine_root.inspect}, when loaded it died because #{e.inspect}"
+end
 require 'date'
 
 
@@ -26,10 +34,11 @@ if bad_repositories.any?
     \e[33mTHESE REPOSITORIES HAVE ISSUES: #{bad_repositories.inspect}\e[31m
 
     You need to override inspect on your repositories.
-    If you don't, the default inspect will try try to create a string that includes
-    add all the rows from the CSVs into the inspect.
+    If you don't, the default inspect will try try to create a string so large that ruby will stop dead.
+    This is true of anything that references a repository or a row that references a reository.
 
-    We run it against tens of thousands of rows, which means it will sudenly hang.
+    If your test suite suddenly stops for over 2 minutes (these tests are integration, they are slow)
+    then probably something is raising an exception, which inspects the object and triggers this issue.
 
     e.g.
     class SomeRepository
@@ -41,14 +50,24 @@ if bad_repositories.any?
 end
 
 
-RSpec.configure do |config|
-  config.before(:suite) do
-    $engine = SalesEngine.new("./data")
-    $engine.startup
+module SalesEngineSpecHelpers
+  class << self
+    attr_accessor :engine
+  end
+
+  def engine
+    self.class.engine
   end
 end
 
-def engine
-  $engine
+RSpec.configure do |config|
+  config.before(:suite) do
+    SalesEngineSpecHelpers.engine = SalesEngine.new("./data") # <-- fkn relative path
+    SalesEngineSpecHelpers.engine.startup
+  end
+  config.include Module.new {
+    def engine
+      SalesEngineSpecHelpers.engine
+    end
+  }
 end
-
