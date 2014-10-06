@@ -6,8 +6,8 @@ describe "SalesEngine merchant extensions", merchant: true do
       it  "returns an array of Dates in descending order of revenue" do
         dates = engine.merchant_repository.dates_by_revenue
 
-        (dates.first == DateTime.parse("2012-03-09") || dates.first == Date.parse("2012-03-09")).should be_true
-        (dates[21] == DateTime.parse("2012-03-06") || dates[21] == Date.parse("2012-03-06")).should be_true
+        expect(dates[0]  == DateTime.parse("2012-03-09") || dates[0]  == Date.parse("2012-03-09")).to be true
+        expect(dates[21] == DateTime.parse("2012-03-06") || dates[21] == Date.parse("2012-03-06")).to be true
       end
     end
 
@@ -16,8 +16,8 @@ describe "SalesEngine merchant extensions", merchant: true do
         dates = engine.merchant_repository.dates_by_revenue(5)
 
         dates.size.should == 5
-        (dates[1] == DateTime.parse("2012-03-08") || dates[1] == Date.parse("2012-03-08")).should be_true
-        (dates.last == DateTime.parse("2012-03-15") || dates.last == Date.parse("2012-03-15")).should be_true
+        expect(dates[1]  == DateTime.parse("2012-03-08") || dates[1]  == Date.parse("2012-03-08")).to be true
+        expect(dates[-1] == DateTime.parse("2012-03-15") || dates[-1] == Date.parse("2012-03-15")).to be true
       end
     end
 

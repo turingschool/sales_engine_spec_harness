@@ -112,10 +112,9 @@ describe "SalesEngine merchants" do
 
       it "returns the customer with the most transactions" do
         customer = merchant.favorite_customer
-        customer_names.any? do |first_name, last_name|
-          customer.first_name == first_name
-          customer.last_name  == last_name
-        end.should be_true
+        expect(customer_names).to be_any { |first_name, last_name|
+          customer.first_name == first_name && customer.last_name  == last_name
+        }
       end
     end
 
@@ -125,9 +124,7 @@ describe "SalesEngine merchants" do
       it "returns the total number of customers with pending invoices" do
         customers = merchant.customers_with_pending_invoices
         customers.count.should == 4
-        customers.any? do |customer|
-          customer.last_name == "Ledner"
-        end.should be_true
+        expect(customers).to be_any { |customer| customer.last_name == "Ledner" }
       end
     end
   end

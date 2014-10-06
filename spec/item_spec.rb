@@ -83,7 +83,7 @@ describe "SalesEngine items" do
           Date.new(2012, 3, 10),
           Date.new(2012, 3, 24)
         ]
-        best.include?(item.best_day.to_date).should be_true
+        expect(best).to include item.best_day
       end
     end
 

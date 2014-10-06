@@ -9,7 +9,7 @@ describe "SalesEngine  customer extensions", customer: true do
         Date.stub(:today => Date.parse("March 29, 2012"))
         days_since = engine.customer_repository.find_by_id(1).days_since_activity
 
-        (days_since >= 3 || days_since <= 4).should be_true
+        expect(days_since >= 3 || days_since <= 4).to eq true
       end
     end
 
