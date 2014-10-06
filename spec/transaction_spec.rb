@@ -13,21 +13,21 @@ RSpec.describe "SalesEngine  transactions" do
           transaction_two = engine.transaction_repository.random
         end
 
-        transaction_one.id.should_not == transaction_two.id
+        expect(transaction_one.id).to_not eq transaction_two.id
       end
     end
 
     describe ".find_by_credit_card_number" do
       it "can find a record" do
         transaction = engine.transaction_repository.find_by_credit_card_number "4634664005836219"
-        transaction.id.should == 5536
+        expect(transaction.id).to eq 5536
       end
     end
 
     describe ".find_all_by_result" do
       it "can find multiple records" do
         transactions = engine.transaction_repository.find_all_by_result "success"
-        transactions.count.should be_within(2).of(4648)
+        expect(transactions.count).to be_within(2).of(4648)
       end
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe "SalesEngine  transactions" do
     describe "#invoice" do
       it "exists" do
         invoice_customer = engine.customer_repository.find_by_id 192
-        transaction.invoice.customer.first_name.should == invoice_customer.first_name
+        expect(transaction.invoice.customer.first_name).to eq invoice_customer.first_name
       end
     end
 

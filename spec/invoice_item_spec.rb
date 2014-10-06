@@ -12,14 +12,14 @@ RSpec.describe "SalesEngine invoice items" do
           invoice_item_two = engine.invoice_item_repository.random
         end
 
-        invoice_item_one.id.should_not == invoice_item_two.id
+        expect(invoice_item_one.id).to_not eq invoice_item_two.id
       end
     end
 
     describe ".find_by_item_id" do
       it "can find a record" do
         invoice_item = engine.invoice_item_repository.find_by_item_id 123
-        invoice_item.item.name.should == "Item Doloribus Ducimus"
+        expect(invoice_item.item.name).to eq "Item Doloribus Ducimus"
       end
     end
 
@@ -36,13 +36,13 @@ RSpec.describe "SalesEngine invoice items" do
 
     describe "#item" do
       it "exists" do
-        invoice_item.item.name.should == "Item Cupiditate Magni"
+        expect(invoice_item.item.name).to eq "Item Cupiditate Magni"
       end
     end
 
     describe "#invoice" do
       it "exists" do
-        invoice_item.invoice.should be
+        expect(invoice_item.invoice).to be
       end
     end
 

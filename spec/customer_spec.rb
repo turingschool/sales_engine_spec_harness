@@ -14,14 +14,14 @@ RSpec.describe "SalesEngine customers" do
           customer_two = engine.customer_repository.random
         end
 
-        customer_one.id.should_not == customer_two.id
+        expect(customer_one.id).to_not eq customer_two.id
       end
     end
 
     describe ".find_by_last_name" do
       it "finds a record" do
         customer = engine.customer_repository.find_by_last_name "Ullrich"
-        %w(Ramon Brice Annabell).should include(customer.first_name)
+        expect(%w(Ramon Brice Annabell)).to include customer.first_name
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe "SalesEngine customers" do
 
       it "returns invoices belonging to the customer" do
         customer.invoices.each do |invoice|
-          invoice.customer_id.should == 999
+          expect(invoice.customer_id).to eq 999
         end
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe "SalesEngine customers" do
 
     describe "#favorite_merchant" do
       it "returns the merchant where the customer has had the most transactions" do
-        customer.favorite_merchant.name.should == "Shields, Hirthe and Smith"
+        expect(customer.favorite_merchant.name).to eq "Shields, Hirthe and Smith"
       end
     end
   end

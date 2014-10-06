@@ -61,10 +61,13 @@ module SalesEngineSpecHelpers
 end
 
 RSpec.configure do |config|
+  config.disable_monkey_patching!
+
   config.before(:suite) do
     SalesEngineSpecHelpers.engine = SalesEngine.new("./data") # <-- fkn relative path
     SalesEngineSpecHelpers.engine.startup
   end
+
   config.include Module.new {
     def engine
       SalesEngineSpecHelpers.engine

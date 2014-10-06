@@ -15,7 +15,7 @@ RSpec.describe "SalesEngine merchant extensions", merchant: true do
       it  "returns the top x Dates in descending order of revenue" do
         dates = engine.merchant_repository.dates_by_revenue(5)
 
-        dates.size.should == 5
+        expect(dates.size).to eq 5
         expect(dates[1]  == DateTime.parse("2012-03-08") || dates[1]  == Date.parse("2012-03-08")).to be true
         expect(dates[-1] == DateTime.parse("2012-03-15") || dates[-1] == Date.parse("2012-03-15")).to be true
       end
@@ -27,7 +27,7 @@ RSpec.describe "SalesEngine merchant extensions", merchant: true do
         date_2 = Date.parse("2012-03-16")
         revenue = engine.merchant_repository.revenue(date_1..date_2)
 
-        revenue.should == BigDecimal("8226179.74")
+        expect(revenue).to eq BigDecimal("8226179.74")
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe "SalesEngine merchant extensions", merchant: true do
         merchant = engine.merchant_repository.find_by_id(7)
         revenue = merchant.revenue(date_1..date_2)
 
-        revenue.should == BigDecimal("57103.77")
+        expect(revenue).to eq BigDecimal("57103.77")
       end
     end
   end

@@ -12,14 +12,14 @@ RSpec.describe "SalesEngine invoices" do
           invoice_two = engine.invoice_repository.random
         end
 
-        invoice_one.id.should_not == invoice_two.id
+        expect(invoice_one.id).to_not eq invoice_two.id
       end
     end
 
     describe ".find_by_status" do
       it "can find a record" do
         invoice = engine.invoice_repository.find_by_status "cool"
-        invoice.should be_nil
+        expect(invoice).to be_nil
       end
     end
 
@@ -47,14 +47,14 @@ RSpec.describe "SalesEngine invoices" do
 
       it "has one with a specific name" do
         item = invoice.items.find {|i| i.name == 'Item Accusamus Officia' }
-        item.should_not be_nil
+        expect(item).to be
       end
     end
 
     describe "#customer" do
       it "exists" do
-        invoice.customer.first_name.should == "Eric"
-        invoice.customer.last_name.should  == "Bergnaum"
+        expect(invoice.customer.first_name).to eq "Eric"
+        expect(invoice.customer.last_name).to  eq "Bergnaum"
       end
     end
 
@@ -64,8 +64,8 @@ RSpec.describe "SalesEngine invoices" do
       end
 
       it "has one for a specific item" do
-        item = invoice.invoice_items.find {|ii| ii.item.name == 'Item Accusamus Officia' }
-        item.should_not be_nil
+        invoice_item_names = invoice.invoice_items.map { |ii| ii.item.name }
+        expect(invoice_item_names).to include 'Item Accusamus Officia'
       end
     end
   end
@@ -83,11 +83,11 @@ RSpec.describe "SalesEngine invoices" do
         invoice = engine.invoice_repository.create(customer: customer, merchant: merchant, items: items)
 
         items.map(&:name).each do |name|
-          invoice.items.map(&:name).should include(name)
+          expect(invoice.items.map &:name).to include name
         end
 
-        invoice.merchant_id.should == merchant.id
-        invoice.customer.id.should == customer.id
+        expect(invoice.merchant_id).to eq merchant.id
+        expect(invoice.customer.id).to eq customer.id
       end
     end
 
@@ -99,7 +99,7 @@ RSpec.describe "SalesEngine invoices" do
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
 
         invoice = engine.invoice_repository.find_by_id(invoice.id)
-        invoice.transactions.count.should == prior_transaction_count + 1
+        expect(invoice.transactions.count).to eq prior_transaction_count.next
       end
     end
 

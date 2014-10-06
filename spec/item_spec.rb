@@ -12,14 +12,14 @@ RSpec.describe "SalesEngine items" do
           item_two = engine.item_repository.random
         end
 
-        item_one.id.should_not == item_two.id
+        expect(item_one.id).to_not eq item_two.id
       end
     end
 
     describe ".find_by_unit_price" do
       it "can find one record" do
         item = engine.item_repository.find_by_unit_price BigDecimal.new("935.19")
-        item.name.should == "Item Alias Nihil"
+        expect(item.name).to eq "Item Alias Nihil"
       end
     end
 
@@ -41,14 +41,14 @@ RSpec.describe "SalesEngine items" do
 
       it "really owns them all" do
         item.invoice_items.each do |ii|
-          ii.item_id.should == item.id
+          expect(ii.item_id).to eq item.id
         end
       end
     end
 
     describe "#merchant" do
       it "exists" do
-        item.merchant.name.should == "Kilback Inc"
+        expect(item.merchant.name).to eq "Kilback Inc"
       end
     end
 
@@ -60,8 +60,8 @@ RSpec.describe "SalesEngine items" do
       it "returns the top n items ranked by most total revenue" do
         most = engine.item_repository.most_revenue(5)
 
-        most.first.name.should == "Item Dicta Autem"
-        most.last.name.should  == "Item Amet Accusamus"
+        expect(most.first.name).to eq "Item Dicta Autem"
+         expect(most.last.name).to eq "Item Amet Accusamus"
       end
     end
 
@@ -69,8 +69,8 @@ RSpec.describe "SalesEngine items" do
       it "returns the top n items ranked by most sold" do
         most = engine.item_repository.most_items(37)
 
-        most[1].name.should == "Item Nam Magnam"
-        most.last.name.should   == "Item Ut Quaerat"
+        expect(most[1].name).to   eq "Item Nam Magnam"
+        expect(most.last.name).to eq "Item Ut Quaerat"
       end
     end
 
