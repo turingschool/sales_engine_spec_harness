@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'rspec', '~> 2.14'
+gem 'rspec', '~> 3.1.0'
+gem 'pry'
