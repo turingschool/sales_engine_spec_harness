@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine invoices" do
+RSpec.describe "SalesEngine invoices" do
   context "Searching" do
     describe ".random" do
       it "usually returns different things on subsequent calls" do

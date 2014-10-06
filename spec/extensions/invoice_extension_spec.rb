@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine invoice extensions", invoice: true do
+RSpec.describe "SalesEngine invoice extensions", invoice: true do
   context "extensions" do
     describe ".pending" do
       it "returns Invoices without a successful transaction" do

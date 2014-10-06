@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine merchant extensions", merchant: true do
+RSpec.describe "SalesEngine merchant extensions", merchant: true do
   context "extensions" do
     describe ".dates_by_revenue" do
       it  "returns an array of Dates in descending order of revenue" do

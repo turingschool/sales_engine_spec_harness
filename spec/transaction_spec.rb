@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine  transactions" do
+RSpec.describe "SalesEngine  transactions" do
 
   context "Searching" do
     describe ".random" do

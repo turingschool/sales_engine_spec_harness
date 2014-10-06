@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine  customer extensions", customer: true do
+RSpec.describe "SalesEngine  customer extensions", customer: true do
   context "extensions" do
 
     describe "#days_since_activity" do

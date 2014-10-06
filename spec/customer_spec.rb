@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SalesEngine customers" do
+RSpec.describe "SalesEngine customers" do
 
   describe "Searching" do
 
