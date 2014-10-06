@@ -26,7 +26,7 @@ describe "SalesEngine invoice items" do
     describe ".find_all_by_quantity" do
       it "can find multiple records" do
         invoice_items = engine.invoice_item_repository.find_all_by_quantity 10
-        invoice_items.should have(2140).invoice_items
+        expect(invoice_items.size).to eq 2140
       end
     end
   end

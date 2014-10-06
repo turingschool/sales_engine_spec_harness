@@ -26,7 +26,7 @@ describe "SalesEngine invoices" do
     describe ".find_all_by_status" do
       it "can find multiple records" do
         invoices = engine.invoice_repository.find_all_by_status "shipped"
-        invoices.should have(4843).invoices
+        expect(invoices.size).to eq 4843
       end
     end
   end
@@ -36,13 +36,13 @@ describe "SalesEngine invoices" do
 
     describe "#transactions" do
       it "has the correct number of them" do
-        invoice.transactions.should have(1).transaction
+        expect(invoice.transactions.size).to eq 1
       end
     end
 
     describe "#items" do
       it "has the correct number of them" do
-        invoice.items.should have(3).items
+        expect(invoice.items.size).to eq 3
       end
 
       it "has one with a specific name" do
@@ -60,7 +60,7 @@ describe "SalesEngine invoices" do
 
     describe "#invoice_items" do
       it "has the correct number of them" do
-        invoice.invoice_items.should have(3).items
+        expect(invoice.invoice_items.size).to eq 3
       end
 
       it "has one for a specific item" do

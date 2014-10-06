@@ -26,7 +26,7 @@ describe "SalesEngine merchants" do
     describe ".find_all_by_name" do
       it "can find multiple records" do
         merchants = engine.merchant_repository.find_all_by_name "Williamson Group"
-        merchants.should have(2).merchants
+        expect(merchants.size).to eq 2
       end
     end
   end
@@ -36,7 +36,7 @@ describe "SalesEngine merchants" do
 
     describe "#items" do
       it "has the correct number of them" do
-        merchant.items.should have(33).items
+        expect(merchant.items.size).to eq 33
       end
 
       it "includes a known item" do
@@ -47,7 +47,7 @@ describe "SalesEngine merchants" do
 
     describe "#invoices" do
       it "has the correct number of them" do
-        merchant.invoices.should have(43).invoices
+        expect(merchant.invoices.size).to eq 43
       end
 
       it "has a shipped invoice for a specific customer" do

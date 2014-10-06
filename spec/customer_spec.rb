@@ -28,7 +28,7 @@ describe "SalesEngine customers" do
     describe ".find_all_by_first_name" do
       it "can find multiple records" do
         customers = engine.customer_repository.find_all_by_first_name "Sasha"
-        customers.should have(2).customers
+        expect(customers.size).to eq 2
       end
     end
 
@@ -39,7 +39,7 @@ describe "SalesEngine customers" do
 
     describe "#invoices" do
       it "returns all of a customer's invoices" do
-        customer.invoices.should have(7).invoices
+        expect(customer.invoices.size).to eq 7
       end
 
       it "returns invoices belonging to the customer" do
@@ -55,7 +55,7 @@ describe "SalesEngine customers" do
 
     describe "#transactions" do
       it "returns a list of transactions the customer has had" do
-        customer.transactions.should have(1).transaction
+        expect(customer.transactions.size).to eq 1
       end
     end
 

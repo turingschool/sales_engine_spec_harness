@@ -26,7 +26,7 @@ describe "SalesEngine items" do
     describe ".find_all_by_name" do
       it "can find multiple records" do
         items = engine.item_repository.find_all_by_name "Item Eos Et"
-        items.should have(3).items
+        expect(items.size).to eq 3
       end
     end
   end
@@ -36,7 +36,7 @@ describe "SalesEngine items" do
 
     describe "#invoice_items" do
       it "has the correct number of them" do
-        item.invoice_items.should have(8).items
+        expect(item.invoice_items.size).to eq 8
       end
 
       it "really owns them all" do
