@@ -64,7 +64,7 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 
   config.before(:suite) do
-    SalesEngineSpecHelpers.engine = SalesEngine.new("./data") # <-- fkn relative path
+    SalesEngineSpecHelpers.engine = SalesEngine.new(File.join spec_harness_root, 'csvs')
     SalesEngineSpecHelpers.engine.startup
   end
 
