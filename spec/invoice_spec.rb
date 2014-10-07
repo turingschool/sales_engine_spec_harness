@@ -71,15 +71,15 @@ RSpec.describe "SalesEngine invoices" do
   end
 
   context "Business Intelligence" do
-
     describe ".create" do
+
       let(:customer) { engine.customer_repository.find_by_id(7) }
       let(:merchant) { engine.merchant_repository.find_by_id(22) }
       let(:items) do
         (1..3).map { engine.item_repository.random }
       end
-      it "creates a new invoice" do
 
+      it "creates a new invoice" do
         invoice = engine.invoice_repository.create(customer: customer, merchant: merchant, items: items)
 
         items.map(&:name).each do |name|
@@ -93,7 +93,7 @@ RSpec.describe "SalesEngine invoices" do
 
     describe "#charge" do
       it "creates a transaction" do
-        invoice = engine.invoice_repository.find_by_id(100)
+        invoice = engine.invoice_repository.find_by_id(3)
         prior_transaction_count = invoice.transactions.count
 
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
@@ -102,6 +102,5 @@ RSpec.describe "SalesEngine invoices" do
         expect(invoice.transactions.count).to eq prior_transaction_count.next
       end
     end
-
   end
 end
