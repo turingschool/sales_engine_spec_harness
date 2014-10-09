@@ -21,7 +21,7 @@ $LOAD_PATH.unshift(sales_engine_root)
 begin
   require 'sales_engine'
 rescue LoadError => e
-  die_because "Expect sales engine to be in #{sales_engine_root.inspect}, when loaded it died because #{e.inspect}"
+  die_because.call "Expect sales engine to be in #{sales_engine_root.inspect}, when loaded it died because #{e.inspect}"
 end
 require 'date'
 
