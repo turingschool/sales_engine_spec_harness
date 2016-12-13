@@ -24,6 +24,7 @@ rescue LoadError => e
   die_because.call "Expect sales engine to be in #{sales_engine_root.inspect}, when loaded it died because #{e.inspect}"
 end
 require 'date'
+require 'bigdecimal'
 
 
 # Must override #inspect on repositories (more on this at https://github.com/rspec/rspec-core/issues/1631)
